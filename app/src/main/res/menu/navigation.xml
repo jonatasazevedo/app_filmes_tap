@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_movies"
+        android:icon="@drawable/ic_settings"
+        android:title="Songs"
+        />
+    <item
+        android:id="@+id/navigation_shows"
+        android:icon="@drawable/ic_folder"
+        android:title="Shows"
+        />
+    <item
+        android:id="@+id/navigation_watchlist"
+        android:icon="@drawable/ic_settings"
+        android:title="Watchlist"
+        />
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_settings"
+        android:title="Search"
+        />
+</menu>
