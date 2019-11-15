@@ -1,43 +1,39 @@
 package com.jonatas.app_filmes_tap.Model;
 
+import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 public class Filme implements Serializable {
-    private String url,titulo,nota,sinopse;
+    private String titulo,nota,sinopse;
+    private Bitmap imagem;
 
-    public Filme(){
+    public Filme(){}
 
+    public Filme(String titulo, String nota, String sinopse, Bitmap imagem) {
+        this.titulo = titulo;
+        this.nota = nota;
+        this.sinopse = sinopse;
+        this.imagem = imagem;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public Bitmap getImagem() {
+        return imagem;
     }
 
     public String getNota() {
         return nota;
     }
 
-    public void setNota(String nota) {
-        this.nota = nota;
-    }
 
     public String getSinopse() {
         return sinopse;
-    }
-
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
     }
 }

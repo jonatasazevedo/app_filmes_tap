@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.jonatas.app_filmes_tap.R;
 import com.jonatas.app_filmes_tap.UI.Tela_detalhes_filmes;
 
@@ -37,13 +36,12 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.tv_titulo_filme.setText(dados.get(position).getTitulo());
-        Glide.with(contexto).load("https://image.tmdb.org/t/p/w500"+dados.get(position).getUrl()).centerCrop().into(holder.img_filme);
-        //o uso do Glide é apenas para configurar a imagem na View pela URL
+        holder.img_filme.setImageBitmap(dados.get(position).getImagem());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(contexto, Tela_detalhes_filmes.class);
-                intent.putExtra("filme",dados.get(position));
+                //intent.putExtra("filme",dados.get(position));
                 contexto.startActivity(intent);
                 //conteudo do filme passado pelo Bundle em uma Intent
             }
