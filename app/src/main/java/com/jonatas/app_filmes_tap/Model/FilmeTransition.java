@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class FilmeTransition implements Serializable {
     private String titulo,nota,sinopse;
+    private int id,favorito;
 
     public String getTitulo() {
         return titulo;
@@ -27,5 +28,21 @@ public class FilmeTransition implements Serializable {
 
     public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(int favorito) {
+        this.favorito = favorito;
     }
 }

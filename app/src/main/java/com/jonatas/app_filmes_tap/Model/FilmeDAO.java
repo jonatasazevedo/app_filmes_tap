@@ -36,17 +36,20 @@ public class FilmeDAO {
         int count= cursor.getInt(0);
         cursor.close();
         return count==0;
+        //retorna verdadeiro caso nao tenha nenhum dado da tabela
     }
 
     public List<Filme> retornarTodos(){
         List<Filme> lista_filmes = new ArrayList<>();
-        Cursor cursor = banco.query(TABLE_DADOS,new String[]{"TITULO","IMAGEM","NOTA","SINOPSE"},null,null,null,null,null);
+        Cursor cursor = banco.query(TABLE_DADOS,new String[]{"ID","TITULO","IMAGEM","NOTA","SINOPSE","FAVORITO"},null,null,null,null,null);
         while(cursor.moveToNext()){
-            String titulo = cursor.getString(0);
-            Bitmap imagem = converterImagemDoBanco(cursor.getBlob(1));
-            String nota = cursor.getString(2);
-            String sinopse = cursor.getString(3);
-            lista_filmes.add(new Filme(titulo,nota,sinopse,imagem));
+            int id = cursor.getInt(0);
+            String titulo = cursor.getString(1);
+            Bitmap imagem = converterImagemDoBanco(cursor.getBlob(2));
+            String nota = cursor.getString(3);
+            String sinopse = cursor.getString(4);
+            int favorito = cursor.getInt(5);
+            lista_filmes.add(new Filme(id,titulo,nota,sinopse,imagem,favorito));
         }
         cursor.close();
         return lista_filmes;
@@ -59,8 +62,15 @@ public class FilmeDAO {
             cv.put("NOTA",filmeResposta.getNota());
             cv.put("SINOPSE",filmeResposta.getSinopse());
             cv.put("IMAGEM",converterImagemParaBanco("https://image.tmdb.org/t/p/w500"+filmeResposta.getUrl()));
+            cv.put("FAVORITO",0);
             banco.insert(TABLE_DADOS,null,cv);
         }
+    }
+
+    public void atualiza(int id,int favorito){
+        ContentValues cv = new ContentValues();
+        cv.put("FAVORITO",favorito);
+        banco.update(TABLE_DADOS,cv,"id=?",new String[]{String.valueOf(id)});
     }
 
     private Bitmap converterImagemDoBanco(byte[] imagemByte){

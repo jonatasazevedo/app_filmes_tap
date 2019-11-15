@@ -3,6 +3,7 @@ package com.jonatas.app_filmes_tap.Model;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,9 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.MyViewHolder
                 filmeTransition.setNota(dados.get(position).getNota());
                 filmeTransition.setSinopse(dados.get(position).getSinopse());
                 filmeTransition.setTitulo(dados.get(position).getTitulo());
-                //classe para passar strings
+                filmeTransition.setId(dados.get(position).getId());
+                filmeTransition.setFavorito(dados.get(position).getFavorito());
+                //classe para passar strings e inteiros
                 intent.putExtra("filme",filmeTransition);
                 intent.putExtra("imagem",converterBitmapParaArrayBytes(dados.get(position).getImagem()));
                 contexto.startActivity(intent);

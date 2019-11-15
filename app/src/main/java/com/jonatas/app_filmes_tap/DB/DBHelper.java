@@ -8,7 +8,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "banco.db";
     private static final int DATABASE_VERSION = 1;
-    private final String CREATE_TABLE = "CREATE TABLE FILME(TITULO varchar(50),IMAGEM BLOB,NOTA varchar(50),SINOPSE varchar(100))";
+    private final String CREATE_TABLE = "CREATE TABLE FILME(ID INTEGER PRIMARY KEY AUTOINCREMENT,TITULO varchar(50),IMAGEM BLOB,NOTA varchar(50),SINOPSE varchar(100),FAVORITO INTEGER)";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

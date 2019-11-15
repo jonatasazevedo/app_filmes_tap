@@ -5,9 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -17,8 +15,6 @@ import com.jonatas.app_filmes_tap.Conexao.Resultados.FilmeResultado;
 import com.jonatas.app_filmes_tap.Model.FilmeAdapter;
 import com.jonatas.app_filmes_tap.Model.FilmeDAO;
 import com.jonatas.app_filmes_tap.R;
-
-import java.io.ByteArrayOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,4 +79,9 @@ public class Tela_lista_filmes extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        configuraRecycler();
+    }
 }
