@@ -25,7 +25,8 @@
             android:id="@+id/titulo_filme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:lines="1"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="#FFFF"
             android:text="titulo do livro"
             />

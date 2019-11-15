@@ -2,6 +2,7 @@ package com.jonatas.app_filmes_tap.Model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jonatas.app_filmes_tap.R;
 import com.jonatas.app_filmes_tap.UI.Tela_detalhes_filmes;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.MyViewHolder>{
@@ -41,7 +43,13 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.MyViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(contexto, Tela_detalhes_filmes.class);
-                //intent.putExtra("filme",dados.get(position));
+                FilmeTransition filmeTransition = new FilmeTransition();
+                filmeTransition.setNota(dados.get(position).getNota());
+                filmeTransition.setSinopse(dados.get(position).getSinopse());
+                filmeTransition.setTitulo(dados.get(position).getTitulo());
+                //classe para passar strings
+                intent.putExtra("filme",filmeTransition);
+                intent.putExtra("imagem",converterBitmapParaArrayBytes(dados.get(position).getImagem()));
                 contexto.startActivity(intent);
                 //conteudo do filme passado pelo Bundle em uma Intent
             }
@@ -69,5 +77,12 @@ public class FilmeAdapter extends RecyclerView.Adapter<FilmeAdapter.MyViewHolder
             img_filme = itemView.findViewById(R.id.imagem_filme);
             cardView = itemView.findViewById(R.id.cardview);
         }
+    }
+
+    private byte[] converterBitmapParaArrayBytes(Bitmap imagem){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        imagem.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        //Usa-se stream para converter o Bitmap em um array de bytes que representa uma imagem JPEG
+        return stream.toByteArray();
     }
 }

@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 
 public interface FilmeRetrofit {
     @GET("movie/top_rated")
-    Call<FilmeResultado> getFilmesAvaliados(@Query("api_key")String chaveAPI);
+    Call<FilmeResultado> getFilmesAvaliados(@Query("api_key")String chaveAPI,@Query("language")String language);
     //retorna-se um responsebody passando a chaveAPI para a Query String que o MovieDB necessita
 
     public static final Retrofit retrofit = new Retrofit.Builder()

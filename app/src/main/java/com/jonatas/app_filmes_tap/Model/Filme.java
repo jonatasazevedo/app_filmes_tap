@@ -1,12 +1,8 @@
 package com.jonatas.app_filmes_tap.Model;
 
 import android.graphics.Bitmap;
-import android.os.Parcel;
-import android.os.Parcelable;
 
-import java.io.Serializable;
-
-public class Filme implements Serializable {
+public class Filme{
     private String titulo,nota,sinopse;
     private Bitmap imagem;
 
@@ -18,12 +14,9 @@ public class Filme implements Serializable {
         this.sinopse = sinopse;
         this.imagem = imagem;
     }
-
     public String getTitulo() {
         return titulo;
     }
-
-
     public Bitmap getImagem() {
         return imagem;
     }
@@ -31,7 +24,6 @@ public class Filme implements Serializable {
     public String getNota() {
         return nota;
     }
-
 
     public String getSinopse() {
         return sinopse;

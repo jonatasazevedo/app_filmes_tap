@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.jonatas.app_filmes_tap.Conexao.Resultados.FilmeResultado;
 import com.jonatas.app_filmes_tap.Model.FilmeAdapter;
 import com.jonatas.app_filmes_tap.Model.FilmeDAO;
 import com.jonatas.app_filmes_tap.R;
+
+import java.io.ByteArrayOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,7 +50,7 @@ public class Tela_lista_filmes extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         FilmeRetrofit apiService = FilmeRetrofit.retrofit.create(FilmeRetrofit.class);
         //Criando instancia do retrofit direcionado à lista de filmes
-        final Call<FilmeResultado> call = apiService.getFilmesAvaliados("ea4f76ce3fe1aee422c82d5097c0f651");
+        final Call<FilmeResultado> call = apiService.getFilmesAvaliados("ea4f76ce3fe1aee422c82d5097c0f651","pt-BR");
         //Chamada assincrona acompanhada da API KEY para regastar os dados da API
         call.enqueue(new Callback<FilmeResultado>() {
             @Override

@@ -10,7 +10,7 @@ public class FilmeResposta {
     @Json(name = "title")
     private final String titulo;
 
-    @Json(name = " vote_average")
+    @Json(name = "vote_average")
     private final String nota;
 
     @Json(name = "overview")
